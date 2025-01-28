@@ -2,45 +2,28 @@ import './App.css'
 import Card from './Card'
 
 
-  const USER1 = {
-    image: "https://via.placeholder.com/150",
-    pseudo: "CoolCat123",
-    email: "coolcat123@example.com",
-    description: "Passionné de jeux vidéo et de technologies, toujours prêt pour une partie de Mario Kart !"
-  };
+const USERS = [
+  {image : "https://picsum.photos/200", pseudo : 'John Doe', email : 'j.doe@anonymous.com', description : 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus enim, ab veniam temporibus cumque dolorem omnis in consectetur architecto animi error, dignissimos ea magnam blanditiis eius officiis, necessitatibus quis maxime?', genre : 'non-binaire'},
+  {image : "https://picsum.photos/200", pseudo : 'Han Solo', email : 'h.solo@millenium.fal', description : 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus enim, ab veniam temporibus cumque dolorem omnis in consectetur architecto animi error, dignissimos ea magnam blanditiis eius officiis, necessitatibus quis maxime?', genre : 'homme'},
+  {image : "https://picsum.photos/200", pseudo : 'Kim Possible', email : 'kimpossible@nickelodeon.tv', description : 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus enim, ab veniam temporibus cumque dolorem omnis in consectetur architecto animi error, dignissimos ea magnam blanditiis eius officiis, necessitatibus quis maxime?', genre : 'femme'}
+]
 
-  const USER2 = {
-    image: "https://via.placeholder.com/150", 
-    pseudo: "NatureLover89",
-    email: "naturelover89@example.com",
-    description: "Amoureux de la nature et des randonnées, j'aime capturer la beauté du monde avec mon appareil photo."
-  };
 
-  const USER3 = {
-    image: "https://via.placeholder.com/150", 
-    pseudo: "TechGuru42",
-    email: "techguru42@example.com",
-    description: "Développeur passionné, geek et amateur de science-fiction. Toujours à jour sur les dernières innovations !"
-  };
-
-const USERS = [USER1, USER2, USER3];
-
-function ListUsers(){
-  return( 
-      USERS.map((user, index) => {
-        console.log(user);
-        return <Card key={index} user={user}/> 
-      })
-  )
-}
 
 function App() {
+  
+  
   return (
     <>
-    <h1 className='titre'>Liste des Utilisateurs : </h1>
-    <ListUsers/>
-   </>
+      <h1>Liste des Utilisateurs</h1>
+      <section>
+        {USERS.map((user, index) => (<Card key={index} pseudo={user.pseudo} image={user.image} email={user.email} genre={user.genre} description={user.description}/>))}
+      </section>
+      {USERS.length > 0 && <p>il y a {USERS.length} utilisateurs inscrits !</p>}
+    
+    </>
   )
+
 }
 
 export default App
