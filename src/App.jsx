@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './App.css'
 import Card from './Card'
 
@@ -12,12 +13,20 @@ const USERS = [
 
 function App() {
   
-  
+  const [search, setSearch] = useState("")
+  const USERS_LIST = USERS.filter(user=>{
+    if(!user.pseudo.includes(search)){
+      return false
+    }
+    return true
+  })
   return (
     <>
       <h1>Liste des Utilisateurs</h1>
+      <input className="searchBar" type="text" onChange={(event)=>setSearch(event.target.value)} />
       <section>
-        {USERS.map((user, index) => (<Card key={index} pseudo={user.pseudo} image={user.image} email={user.email} genre={user.genre} description={user.description}/>))}
+
+        {USERS_LIST.map((user, index) => (<Card key={index} pseudo={user.pseudo} image={user.image} email={user.email} genre={user.genre} description={user.description}/>))}
       </section>
       {USERS.length > 0 && <p>il y a {USERS.length} utilisateurs inscrits !</p>}
     
